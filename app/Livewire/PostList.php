@@ -54,7 +54,9 @@ class PostList extends Component
         $this->search = '';
         $this->category = '';
         $this->year = '';
+        $this->selectedDate = ''; // Clear the selected date
         $this->resetPage();
+        $this->dispatch('clear-year-dropdown');// Dispatch a custom browser event
     }
 
     #[Computed()]
