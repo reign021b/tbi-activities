@@ -18,7 +18,7 @@
         <!-- This section displays the post's category and published date. -->
         <div class="flex items-center mb-2 gap-x-2">
             <!-- If the post has a category, it displays a badge with the category's title. -->
-            @if ($category = $post->categories()->first())
+            @if ($category = $post->categories->first())
                 <x-posts.category-badge :category="$category" />
             @endif
             <!-- This is the post's published date. -->

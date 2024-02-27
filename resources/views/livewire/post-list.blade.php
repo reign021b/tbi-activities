@@ -38,7 +38,6 @@
 
             <!-- This datepicker allows the user to filter posts by date. -->
             <input class="rounded-2xl" type="date" id="myDate" name="myDate" wire:model="selectedDate" wire:change="clearYearDropdown">
-
         </div>
 
         <!-- These buttons allow the user to sort posts by latest or oldest. -->
@@ -53,7 +52,7 @@
     <!-- This is the list of posts. -->
     <div wire:key="postList{{ $year }}" class="py-4">
         @foreach ($this->posts as $post)
-            <x-posts.post-item :post="$post" />
+            <x-posts.post-item wire:key="{{ $post->id }}" :post="$post" />
         @endforeach
     </div>
 

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Home">
     <div class="mb-10 w-full">
         <h2 class="mt-16 mb-5 text-3xl text-blue-900 font-bold">Latest Activities</h2>
         <div class="w-full mb-5">

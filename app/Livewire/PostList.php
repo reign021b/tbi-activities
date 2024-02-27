@@ -56,14 +56,14 @@ class PostList extends Component
         $this->year = '';
         $this->selectedDate = ''; // Clear the selected date
         $this->resetPage();
-        $this->dispatch('clear-year-dropdown');// Dispatch a custom browser event
+        $this->dispatch('clear-year-dropdown');// Dispatch clear-year-dropdown event
     }
 
     #[Computed()]
     public function posts()
     {
         return Post::published()
-            ->orderBy('published_at', $this->sort)
+            ->with('author', 'categories')
             ->when($this->activeCategory, function ($query) {
                 $query->withCategory($this->category);
             })
@@ -74,6 +74,7 @@ class PostList extends Component
             ->when($this->selectedDate, function ($query) { // Filter posts by selected date
                 $query->whereDate('published_at', $this->selectedDate);
             })
+            ->orderBy('published_at', $this->sort)
             ->paginate(3);
     }
 
@@ -87,8 +88,8 @@ class PostList extends Component
     public function updatedSelectedDate($value)
     {
         $this->selectedDate = $value;
-        $this->date = ''; // Set the year property to an empty string
-        $this->year = '';
+        $this->date = ''; // Set the date property to an empty string
+        $this->year = ''; // Set the year property to an empty string
         $this->posts = $this->posts(); // Manually update the posts data
         $this->resetPage();
         $this->dispatch('refreshPostsList'); // Dispatch the event
@@ -109,6 +110,9 @@ class PostList extends Component
     #[Computed()]
     public function activeCategory()
     {
+        if ($this->category === null || $this->category === '') {
+            return null;
+        }
         return Category::where('slug', $this->category)->first();
     }
 

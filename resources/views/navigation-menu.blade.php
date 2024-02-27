@@ -1,8 +1,8 @@
 <nav class="flex items-center justify-between py-3 px-6 border-b border-gray-100 text-2xl">
     <div id="nav-left" class="flex items-center ">
-        <a href="/" class="flex items-center font-semibold border rounded-br-3xl rounded-tl-3xl bg-blue-950 text-white" >
-            &nbsp;&nbsp;<img src="{{ asset('images/event_logo.png') }}" alt="Icon" class="w-16 h-auto">
-            <h1 class="h-16 flex items-center " >&nbsp;TBI</h1>&nbsp;Activities&nbsp;
+        <a href="{{ route('home') }}" :active="request()->routeIs('home')" class="flex items-center font-semibold rounded-tl-3xl" >
+            &nbsp;&nbsp;<img src="{{ asset('images/TBI_logo.jpg') }}" alt="Icon" class="w-16 h-auto rounded-full">
+            <h1 class="h-16 flex items-center text-blue-950" >&nbsp;TBI</h1>&nbsp;Activities&nbsp;
         </a>
         <div class="top-menu ml-10">
             <div class="flex space-x-4">

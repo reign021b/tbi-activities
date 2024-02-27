@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout title="2fa challenge">
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
@@ -55,4 +55,4 @@
             </form>
         </div>
     </x-authentication-card>
-</x-guest-layout>
+</x-app-layout>
