@@ -29,11 +29,6 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="code" value="{{ __('Registration Code') }}" />
-                <x-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" required />
-            </div>
-
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">

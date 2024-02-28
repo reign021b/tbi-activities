@@ -1,8 +1,9 @@
-<a class="flex space-x-2 items-center hover:text-blue-700 text-lg text-black font-semibold"
-   href="{{ url('/admin') }}">
-    Admin
-</a>
-<div class="ml-3 relative">
+<div class="relative flex ml-3 space-x-4 ">
+    @can('view-admin', App\Models\User::class)
+        <x-nav-link :navigate='false' href="{{ route('filament.admin.auth.login') }}" :active="request()->routeIs('filament.admin.auth.login')">
+            <span class="hover:text-blue-700 text-lg text-black font-semibold">{{ __('Admin') }}</span>
+        </x-nav-link>
+    @endcan
     <x-dropdown align="right" width="48">
         <x-slot name="trigger">
             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
